@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+void printReverse(char str[], int index) {
+    if (index < 0)
+        return;
+    printf("%c", str[index]);
+    printReverse(str, index - 1);
+}
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    printf("Reverse of the string: ");
+    printReverse(str, strlen(str) - 1);
+    printf("\n");
+    return 0;
+}

@@ -1,0 +1,37 @@
+#include <stdio.h>
+void min_max_subsequences(int nums[], int n) {
+    if (n <= 0)
+        return;
+    int min_subseq[n];
+    int max_subseq[n];
+    min_subseq[0] = max_subseq[0] = nums[0];
+    for (int i = 1; i < n; i++) {
+        if (nums[i] < min_subseq[i - 1])
+            min_subseq[i] = nums[i];
+        else
+            min_subseq[i] = min_subseq[i - 1];
+        if (nums[i] > max_subseq[i - 1])
+            max_subseq[i] = nums[i];
+        else
+            max_subseq[i] = max_subseq[i - 1];
+    }
+    printf("Minimum value subsequence: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", min_subseq[i]);
+    printf("\n");
+    printf("Maximum value subsequence: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", max_subseq[i]);
+    printf("\n");
+}
+int main() {
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    int nums[n];
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < n; i++)
+        scanf("%d", &nums[i]);
+    min_max_subsequences(nums, n);
+    return 0;
+}
